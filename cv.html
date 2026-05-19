@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Minjun Kim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2e4a;
+      --navy-light: #e8eef5;
+      --text: #111111;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: var(--text);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .nav-logo {
+      font-family: 'Source Serif 4', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      margin-right: auto;
+    }
+    nav a.nl {
+      font-size: 13.5px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 13px;
+      border-radius: 5px;
+      transition: color 0.15s, background 0.15s;
+    }
+    nav a.nl:hover,
+    nav a.nl.active {
+      color: var(--navy);
+      background: var(--navy-light);
+    }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 56px 32px 100px;
+    }
+    .cv-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    h1 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--navy-light);
+      border: 1px solid #c5d5e8;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .dl-btn:hover {
+      background: #d6e4f0;
+    }
+
+    .pdf-wrap {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pdf-wrap iframe {
+      width: 100%;
+      height: 85vh;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px;
+      font-size: 12.5px;
+      color: #9ca3af;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 40px 20px 80px; }
+      .nav-inner { padding: 0 20px; }
+      .pdf-wrap iframe { height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Minjun Kim</a>
+    <a href="index.html#about" class="nl">About</a>
+    <a href="index.html#publications" class="nl">Publications</a>
+    <a href="index.html#awards" class="nl">Awards</a>
+    <a href="cv.html" class="nl active">CV</a>
+    <a href="index.html#contact" class="nl">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="cv-header">
+    <h1>Curriculum Vitae</h1>
+    <a href="files/CV_MinjunKim.pdf" download class="dl-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download PDF
+    </a>
+  </div>
+
+  <div class="pdf-wrap">
+    <iframe src="files/CV_MinjunKim.pdf" title="Minjun Kim CV"></iframe>
+  </div>
+</div>
+
+<footer>
+  <p>Minjun Kim &nbsp;·&nbsp; Seoul National University &nbsp;·&nbsp; Updated May 2026</p>
+</footer>
+
+</body>
+</html>

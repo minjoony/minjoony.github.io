@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minjun Kim</title>
+  <meta name="description" content="Minjun Kim - Ph.D. Candidate, Seoul National University. MRI, QSM, Deep Learning.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #1f4f8a;
+      --navy-deep: #15345f;
+      --navy-soft: #edf4fb;
+      --sky: #2f67ab;
+      --text: #1b2430;
+      --muted: #667085;
+      --border: #e7ebf0;
+      --bg: #fafafa;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+      letter-spacing: -0.015em;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 250, 0.96);
+      border-bottom: 1px solid rgba(231, 235, 240, 0.92);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 36px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--navy-deep);
+      text-decoration: none;
+      margin-right: auto;
+      letter-spacing: -0.02em;
+    }
+
+    nav a.nl {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: color 0.18s ease, background 0.18s ease;
+    }
+
+    nav a.nl:hover,
+    nav a.nl.active {
+      color: var(--navy);
+      background: var(--navy-soft);
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 72px 36px 120px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 88px;
+    }
+
+    .hero-name {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-size: clamp(34px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+      color: var(--navy-deep);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-sub a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+
+    .hero-sub a:hover {
+      color: #2563eb;
+    }
+
+    .hero-bio p {
+      color: #46505e;
+      font-size: 17px;
+      margin-bottom: 16px;
+      max-width: 700px;
+    }
+
+    .hero-bio a {
+      color: var(--sky);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+
+    .hero-bio a:hover {
+      color: #2563eb;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.18s ease;
+    }
+
+    .links a:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    .hero-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fafafa;
+      justify-self: end;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    section {
+      margin-bottom: 84px;
+    }
+
+    .sh {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: 800;
+      white-space: nowrap;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+
+    .sh-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(31, 79, 138, 0.18) 0%, rgba(31, 79, 138, 0.03) 100%);
+    }
+
+    .selected-pubs {
+      display: grid;
+      gap: 24px;
+    }
+
+    .edu-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 22px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(231, 235, 240, 0.95);
+    }
+
+    .edu-item:first-child {
+      border-top: 1px solid rgba(231, 235, 240, 0.95);
+    }
+
+    .edu-period {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .edu-degree {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 4px;
+    }
+
+    .edu-main,
+    .edu-sub {
+      font-size: 15px;
+      color: #111111;
+    }
+
+    .edu-sub {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .section-note {
+      margin-top: -12px;
+      margin-bottom: 26px;
+      font-size: 14px;
+      color: #111111;
+    }
+
+    .section-note a {
+      color: #111111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .pub-card {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 28px;
+      background: var(--card);
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(231, 235, 240, 0.95);
+      align-items: stretch;
+    }
+
+    .pub-card:first-child {
+      border-top: 1px solid rgba(231, 235, 240, 0.95);
+    }
+
+    .pub-figure {
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fafafa;
+      padding: 12px;
+      cursor: zoom-in;
+    }
+
+    .pub-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #fafafa;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(25, 18, 15, 0.82);
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: min(1200px, 92vw);
+      max-height: 90vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      display: block;
+      background: #fafafa;
+      border-radius: 10px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--navy-deep);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+      background: #eef4fb;
+    }
+
+    .pub-card--chi7t .pub-figure {
+      height: 260px;
+      padding: 4px;
+    }
+
+    .pub-figure--empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .pub-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pub-title {
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      color: #111111;
+    }
+
+    .pub-authors {
+      font-size: 15.5px;
+      color: #111111;
+      margin-bottom: 10px;
+    }
+
+    .pub-authors strong {
+      color: #111111;
+      font-weight: 700;
+    }
+
+    .pub-venue {
+      font-size: 16px;
+      color: #111111;
+      margin-bottom: 16px;
+    }
+
+    .pub-venue .venue {
+      color: #111111;
+      font-weight: 800;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pub-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.18s ease;
+    }
+
+    footer a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .pub-links a:hover {
+      color: #2563eb;
+    }
+
+    .award-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .award {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(231, 235, 240, 0.95);
+    }
+
+    .award:first-child {
+      border-top: 1px solid rgba(231, 235, 240, 0.95);
+    }
+
+    .award-y {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
+    .award-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .award-sub {
+      font-size: 15px;
+      color: #111111;
+      margin-top: 4px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(231, 235, 240, 0.95);
+      text-align: center;
+      padding: 34px 20px;
+      font-size: 14px;
+      color: #7a8594;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-photo {
+        justify-self: start;
+        width: 180px;
+        height: 180px;
+      }
+
+      .pub-card {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 16px;
+      }
+
+      .wrap {
+        padding: 54px 20px 90px;
+      }
+
+      .nav-inner {
+        padding: 0 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .hero-bio p {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .pub-card {
+        padding: 18px 0;
+      }
+
+      .pub-figure {
+        height: 190px;
+      }
+
+      .pub-card--chi7t .pub-figure {
+        height: 220px;
+      }
+
+      .pub-title {
+        font-size: 18px;
+      }
+
+      .award {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Minjun Kim</a>
+    <a href="#about" class="nl active">About</a>
+    <a href="#education" class="nl">Education</a>
+    <a href="#publications" class="nl">Selected Publications</a>
+    <a href="#awards" class="nl">Honors &amp; Awards</a>
+    <a href="files/CV_MinjunKim.pdf" class="nl" target="_blank" rel="noopener noreferrer">CV</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero" id="about">
+    <div class="hero-text">
+      <p class="hero-name">Minjun Kim</p>
+      <p class="hero-sub"><a href="mailto:minjoony(at)snu.ac.kr">lool1015@snu.ac.kr</a></p>
+
+      <div class="hero-bio">
+        <p>Welcome to my website.</p>
+        <p>
+          I am a Ph.D. candidate in the
+          <a href="https://ece.snu.ac.kr/" target="_blank" rel="noopener noreferrer">Department of Electrical and Computer Engineering</a>
+          at Seoul National University, advised by <a href="https://list.snu.ac.kr/" target="_blank" rel="noopener noreferrer">Prof. Jongho Lee</a>.
+        </p>
+        <p>
+          My research focuses on quantitative MRI and ultra-high field imaging, with particular interests in magnetic susceptibility, high-resolution imaging, and longitudinal reconstruction.
+        </p>
+      </div>
+
+      <div class="links">
+        <a href="mailto:minjoony@snu.ac.kr">Email</a>
+        <a href="https://https://scholar.google.com/citations?user=KwVzcZ0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a href="files/CV_MinjunKim.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <a href="https://www.linkedin.com/in/minjun-kim-75253823b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/minjoony" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="files/profile.jpg" alt="Minjun Kim">
+    </div>
+  </div>
+
+  <section id="education">
+    <div class="sh">
+      <h2>Education</h2>
+      <div class="sh-line"></div>
+    </div>
+
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-period">2020.09 - Present</div>
+        <div>
+          <div class="edu-degree">Ph.D. candidate in Electrical and Computer Engineering</div>
+          <div class="edu-main">Department of Electrical and Computer Engineering</div>
+          <div class="edu-main">Seoul National University, Seoul, Korea</div>
+          <div class="edu-sub">Adviser: Professor Jongho Lee</div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-period">2025.11 - 2026.04</div>
+        <div>
+          <div class="edu-degree">Visiting Student</div>
+          <div class="edu-main">Athinoula A. Martinos Center for Biomedical Imaging</div>
+          <div class="edu-main">Massachusetts General Hospital and Harvard Medical School</div>
+          <div class="edu-main">Charlestown, USA</div>
+          <div class="edu-sub">Adviser: Professor Berkin Bilgic</div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-period">2016 - 2020.08</div>
+        <div>
+          <div class="edu-degree">B.S. in Electrical and Computer Engineering</div>
+          <div class="edu-main">Department of Electrical and Computer Engineering</div>
+          <div class="edu-main">Seoul National University, Seoul, Korea</div>
+          <div class="edu-sub">Cum Laude Honors</div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-period">2019</div>
+        <div>
+          <div class="edu-degree">Study Abroad Exchange Program, Electrical Engineering</div>
+          <div class="edu-main">ETH Zurich, Zurich, Switzerland</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sh">
+      <h2>Selected Publications</h2>
+      <div class="sh-line"></div>
+    </div>
+    <p class="section-note">Other publications can be found in my <a href="https://scholar.google.com/citations?user=6HlxVcsAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.</p>
+
+    <div class="selected-pubs">
+      <article class="pub-card pub-card--chi7t">
+        <div class="pub-figure">
+          <img src="files/in-vivo-high-res.jpg" alt="Representative figure for In-vivo high-resolution χ-separation at 7T">
+        </div>
+
+        <div class="pub-content">
+          <p class="pub-title">In-vivo high-resolution χ-separation at 7T</p>
+          <p class="pub-authors"><strong>J. Kim</strong>, M. Kim, S. Ji, K. Min, H. Jeong, H.-G. Shin, C. Oh, R. J. Fox, K. E. Sakaie, M. J. Lowe, S.-H. Oh, S. Straub, S.-G. Kim, and J. Lee</p>
+          <p class="pub-venue"><span class="venue">NeuroImage</span>, 2025</p>
+          <div class="pub-links">
+            <a href="https://www.sciencedirect.com/science/article/pii/S105381192500062X" target="_blank" rel="noopener noreferrer">Paper</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub-card pub-card--chisepnet">
+        <div class="pub-figure">
+          <img src="files/x-sepnet.jpg" alt="Representative figure for χ-sepnet">
+        </div>
+
+        <div class="pub-content">
+          <p class="pub-title">χ-sepnet: Deep neural network for magnetic susceptibility source separation</p>
+          <p class="pub-authors">M. Kim, S. Ji, <strong>J. Kim</strong>, K. Min, H. Jeong, J. Youn, T. Kim, J. Jang, B. Bilgic, H.-G. Shin, and J. Lee</p>
+          <p class="pub-venue"><span class="venue">Human Brain Mapping</span>, 2025</p>
+          <div class="pub-links">
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11748151/" target="_blank" rel="noopener noreferrer">Paper</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub-card pub-card--deeprf">
+        <div class="pub-figure">
+          <img src="files/deeprf.png" alt="Representative figure for Deep Reinforcement Learning-Designed Radiofrequency Waveform in MRI">
+        </div>
+
+        <div class="pub-content">
+          <p class="pub-title">Deep Reinforcement Learning-Designed Radiofrequency Waveform in MRI</p>
+          <p class="pub-authors">D. Shin, Y. Kim, C. Oh, H. An, J. Park, <strong>J. Kim</strong>, and J. Lee</p>
+          <p class="pub-venue"><span class="venue">Nature Machine Intelligence</span>, 2021</p>
+          <div class="pub-links">
+            <a href="https://www.nature.com/articles/s42256-021-00411-1" target="_blank" rel="noopener noreferrer">Paper</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub-card">
+        <div class="pub-figure">
+          <img src="files/mimosa.jpg" alt="Representative figure for MIMOSA">
+        </div>
+
+        <div class="pub-content">
+          <p class="pub-title">MIMOSA: Multi-parametric Imaging using Multiple-echoes with Optimized Simultaneous Acquisition for highly-efficient quantitative MRI</p>
+          <p class="pub-authors">Y. Chen, Y. Jun, A. Heydari, X. Yong, <strong>J. Kim</strong>, J. Lee, H. Liu, H. Ye, B. Gagoski, S. Fujita, and B. Bilgic</p>
+          <p class="pub-venue"><span class="venue">Magnetic Resonance in Medicine</span>, 2026</p>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1002/mrm.70143" target="_blank" rel="noopener noreferrer">Paper</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="sh">
+      <h2>Honors and Awards</h2>
+      <div class="sh-line"></div>
+    </div>
+
+    <div class="award-list">
+      <div class="award">
+        <div class="award-y">2026</div>
+        <div>
+          <div class="award-name">ISMRM Magna Cum Laude Merit Award</div>
+          <div class="award-sub">"Simultaneous reconstruction of longitudinal QSM data (Longitudinal-QSM)"</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2026</div>
+        <div>
+          <div class="award-name">Best Oral Presentation 1st</div>
+          <div class="award-sub">ISMRM EMTP Study Group Trainee Day, "Simultaneous reconstruction of longitudinal QSM data (Longitudinal-QSM)"</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2025</div>
+        <div>
+          <div class="award-name">ISMRM Magna Cum Laude Merit Award</div>
+          <div class="award-sub">"Visualization of in-vivo brainstem myeloarchitecture via χ-separation at 7T"</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2023</div>
+        <div>
+          <div class="award-name">Best Trainee Scientific Awards - Poster Grand Prix</div>
+          <div class="award-sub">International Congress on MRI &amp; Annual Scientific Meeting of KSMRM</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2022</div>
+        <div>
+          <div class="award-name">Best Trainee Scientific Awards - Poster Gold</div>
+          <div class="award-sub">International Congress on MRI &amp; Annual Scientific Meeting of KSMRM</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2021</div>
+        <div>
+          <div class="award-name">Best Trainee Scientific Awards - Oral 2nd Prize</div>
+          <div class="award-sub">International Congress on MRI &amp; Annual Scientific Meeting of KSMRM</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2021</div>
+        <div>
+          <div class="award-name">The Encouragement Prize</div>
+          <div class="award-sub">The Joint Conference of the IBEC and the ICBHI</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2019</div>
+        <div>
+          <div class="award-name">Global Exchange Scholarship</div>
+          <div class="award-sub">Mirae Asset Park Hyeon Joo Foundation</div>
+        </div>
+      </div>
+
+      <div class="award">
+        <div class="award-y">2018-19</div>
+        <div>
+          <div class="award-name">Academic Excellence Scholarship</div>
+          <div class="award-sub">Seoul National University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Minjun Kim | Seoul National University | Updated May 2026</p>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">x</button>
+    <img id="lightbox-image" src="" alt="">
+  </div>
+</div>
+
+<script>
+  const links = document.querySelectorAll('nav a.nl');
+  const ids = ['about', 'education', 'publications', 'awards'];
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const pubFigures = document.querySelectorAll('.pub-figure img');
+
+  function openLightbox(src, alt) {
+    lightboxImage.src = src;
+    lightboxImage.alt = alt || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImage.src = '';
+    lightboxImage.alt = '';
+    document.body.style.overflow = '';
+  }
+
+  pubFigures.forEach(img => {
+    img.addEventListener('click', () => {
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    let cur = 'about';
+
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 90) cur = id;
+    });
+
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+
+      if (!href.startsWith('#')) {
+        a.classList.remove('active');
+        return;
+      }
+
+      const h = href.replace('#', '');
+      a.classList.toggle('active', h === cur);
+    });
+  });
+</script>
+
+</body>
+</html>
